@@ -1,13 +1,13 @@
 import { getLocalePluralCase } from '@angular/common';
 import { Injectable } from '@angular/core';
-
+import {Place} from './place.model'
 //este servicio es una clase que tiene inyectado un poco de codigo de angular
 @Injectable({
   providedIn: 'root'
 })
 export class PlacesService {
 
-  public places = [
+  public places: Place[] = [
     {
       id: '1',
       title: 'Eiffel Tower',
@@ -35,12 +35,21 @@ export class PlacesService {
       })
     }
   }
-  addPlace(){}
-  deletePlace(){}
-
+  addPlace(title: string, imageURL: string){
+    this.places.push({
+      title,
+      imageURL,
+      comments: [],
+      id: this.places.length + 1 + ""
+    })
+  }
+  deletePlace(placeId: string){
+    this.places = this.places.filter(place=> {
+      return place.id !== placeId
+    })
 
   }
-
+}
 function getPlaces() {
   throw new Error('Function not implemented.');
 }
