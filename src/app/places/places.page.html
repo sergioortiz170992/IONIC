@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>places</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <!--Esto es una lista de elementos 
+    <div *ngFor="let place of places">
+      {{place.title}}
+      {{place.imageURL}}
+    </div>
+    --> 
+    <!--Esto es un elemento unico-->  
+    <ion-item *ngFor="let place of places" [routerLink]="['/places',place.id]">
+      
+      <ion-avatar slot="start"> <!-- es para luego situarlo derecha izq sin que interfiera con el texto -->
+      <ion-img [src]="place.imageURL"></ion-img>
+      
+
+      </ion-avatar>
+      <ion-label>
+        {{place.title}}
+      </ion-label>
+      
+    </ion-item>
+
+  </ion-list>
+
+
+
+</ion-content>
